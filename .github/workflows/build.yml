@@ -14,7 +14,7 @@ jobs:
             - name: Clone from github
               uses: actions/checkout@v3
 
-            - name: Clone immortalwrtARM repo
+            - name: Clone immortalwrt repo
               run: |
                   $CLONE_COMMAND
 
@@ -22,7 +22,7 @@ jobs:
               run: |
                   cp -f .config feeds.conf.default diy.sh $REPO_NAME/
 
-            - name: Get the dependency of immortalwrtARM
+            - name: Get the dependency of immortalwrt
               run: |
                   cd $REPO_NAME
                   chmod +x diy.sh
@@ -39,7 +39,7 @@ jobs:
                   name: config before build
                   path: .config
 
-            - name: Build immortalwrtARM
+            - name: Build immortalwrt
               run: |
                   cd $REPO_NAME
                   make -j$(nproc)
@@ -49,7 +49,7 @@ jobs:
 
             - name: Move results to root
               run: |
-                  cd /home/runner/work/Actions-ImmortalWrt/Actions-ImmortalWrt/immortalwrtARM
+                  cd /home/runner/work/Actions-ImmortalWrt/Actions-ImmortalWrt/immortalwrt
                   mv bin/targets ../
                   cd ..
 
